@@ -1,7 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
     Layout = null;
 }
 
@@ -10,38 +7,51 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>BookStore Login</title>
-    <link href="/lib/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Administration Login</title>
+    <link href="/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/look.css" />
 </head>
 
 <body>
-    <div class="bg-dark text-white p-2">
-        <span class="navbar-brand m-1-2">BookStore</span>
-    </div>
 
-    <div class="m-1 p-1 shadow p-3 mb-5 bg-body rounded">
-        <div class="text-danger" asp-validation-summary="All"></div>
-
-        <form method="post" asp-controller="Account" asp-action="Login">
-
-            <div class="form-group form-floating mb-2">
-
-                <input asp-for="Username" id="floatingUsername" class="form-control" />
-                <label for="floatingUsername" asp-for="Username">Username:</label>
-            </div>
-
-            <div class="form-group form-floating mb-2">
-                <input asp-for="Password" id="floatingPassword" class="form-control" type="password" />
-                <label for="floatingPassword" asp-for="Password">Password:</label>
-
-            </div>
-
-            <button class="btn btn-primary" type="submit">Log In</button>
-
-            <input type="hidden" asp-for="ReturnUrl" />
-
-        </form>
+    <div class="p-2">
 
     </div>
+
+    <div class="row">
+
+        <div class="col-4"></div>
+
+        <div class="col-4">
+
+            <div class="jumbotron .d-xl-inline-flex justify-content-center align-items-center">
+
+                <div class="text-danger" asp-validation-summary="All"></div>
+
+                <form method="post" asp-controller="Account" asp-action="Login">
+
+                    <div><h5>Admin Login</h5></div>
+                    &nbsp
+
+                    <div class="form-group">
+                        <label asp-for="Username">Username: </label>
+                        <input asp-for="Username" class="form-control" />
+                    </div>
+
+                    <div class="form-group ">
+                        <label asp-for="Password">Password</label>
+                        <input asp-for="Password" class="form-control" type="password" />
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">Login</button>
+
+                    <input type="hidden" asp-for="ReturnUrl" />
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
 </body>
 </html>
