@@ -3,35 +3,35 @@
 
 @model Crash
 
-<h1>this the the crash summary</h1>
-@*<div class="card card-outline-primary m-1 p-1">
+@*<h1>this the the crash summary</h1>*@
+<div class="card card-outline-primary m-1 p-1">
 
     <div class="bg-light p-1">
-        <h4>@Model.CRASH_ID</h4>
+        <h4>@Model.CRASH_ID - @Model.COUNTY_NAME</h4>
 
         <span class="badge bg-info text-light" style="float:left">
-            Category: @Model.CRASH_SEVERITY_ID
+            Severity: @Model.CRASH_SEVERITY_ID
         </span>
     </div>
 
 
     <ul>
 
-        <li>Author: @Model.Author</li>
+        <li>Time/Date: @Model.TIME @Model.DAY @Model.MONTH </li>
 
-        <li>Publisher: @Model.Publisher</li>
+        <li>Lat/Long: @Model.LAT_UTM_Y, @Model.LONG_UTM_X</li>
 
-        <li>ISBN: @Model.ISBN</li>
+        <li>Route: @Model.ROUTE</li>
 
-        <li>Classification: @Model.Classification</li>
+        <li>Milepoint: @Model.MILEPOINT</li>
 
-        <li>Page Count: @Model.PageCount</li>
+        <li>Road: @Model.MAIN_ROAD_NAME</li>
 
-        <li>Price: @Model.Price.ToString("$#,##0.00")</li>
+        <li>City: @Model.CITY</li>
 
     </ul>
 
-    <form method="post" asp-page="/Cart">
+    @*<form method="post" asp-page="/Cart">
 
         <input type="hidden" asp-for="@Model.BookId" />
         <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
@@ -40,5 +40,5 @@
         <span class="card-text">
             <button type="submit" class="btn btn-success btn-sm float-end">Add to Cart</button>
         </span>
-    </form>
-</div>*@
+    </form>*@
+</div>
