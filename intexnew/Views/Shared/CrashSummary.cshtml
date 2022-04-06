@@ -3,42 +3,117 @@
 
 @model Crash
 
-<h1>this the the crash summary</h1>
-@*<div class="card card-outline-primary m-1 p-1">
-
+<div class="card card-outline-primary m-1 p-1">
     <div class="bg-light p-1">
-        <h4>@Model.CRASH_ID</h4>
-
+        <h2>ID: @Model.CRASH_ID </h2>
         <span class="badge bg-info text-light" style="float:left">
-            Category: @Model.CRASH_SEVERITY_ID
+            Severity: @Model.CRASH_SEVERITY_ID
         </span>
     </div>
-
-
     <ul>
+        <li>Time/Date: @Model.TIME @Model.DAY @Model.MONTH </li>
+        <li>Lat/Long: @Model.LAT_UTM_Y, @Model.LONG_UTM_X</li>
+        <li>Route: @Model.ROUTE</li>
+        <li>Milepoint: @Model.MILEPOINT</li>
+        @*<li>Road: @Model.MAIN_ROAD_NAME</li>*@
+        <li>City: @Model.CITY</li>
+        <li>County: @Model.COUNTY_NAME</li>
+        @*<li>WORK_ZONE_RELATED: @Model.WORK_ZONE_RELATED</li>
+        <li>PEDESTRIAN_INVOLVED: @Model.PEDESTRIAN_INVOLVED</li>
+        <li>BICYCLIST_INVOLVED: @Model.BICYCLIST_INVOLVED</li>
+        <li>MOTORCYCLE_INVOLVED: @Model.MOTORCYCLE_INVOLVED</li>
+        <li>IMPROPER_RESTRAINT: @Model.IMPROPER_RESTRAINT</li>
+        <li>UNRESTRAINED: @Model.UNRESTRAINED</li>
+        <li>DUI: @Model.DUI</li>
+        <li>INTERSECTION_RELATED: @Model.INTERSECTION_RELATED</li>
+        <li>WILD_ANIMAL_RELATED: @Model.WILD_ANIMAL_RELATED</li>
+        <li>DOMESTIC_ANIMAL_RELATED: @Model.DOMESTIC_ANIMAL_RELATED</li>
+        <li>OVERTURN_ROLLOVER: @Model.OVERTURN_ROLLOVER</li>
+        <li>COMMERCIAL_MOTOR_VEH_INVOLVED: @Model.COMMERCIAL_MOTOR_VEH_INVOLVED</li>
+        <li>TEENAGE_DRIVER_INVOLVED: @Model.TEENAGE_DRIVER_INVOLVED</li>
+        <li>OLDER_DRIVER_INVOLVED: @Model.OLDER_DRIVER_INVOLVED</li>
+        <li>NIGHT_DARK_CONDITION: @Model.NIGHT_DARK_CONDITION</li>
+        <li>SINGLE_VEHICLE: @Model.SINGLE_VEHICLE</li>
+        <li>DISTRACTED_DRIVING: @Model.DISTRACTED_DRIVING</li>
+        <li>DROWSY_DRIVING: @Model.DROWSY_DRIVING</li>
+        <li>ROADWAY_DEPARTURE: @Model.ROADWAY_DEPARTURE</li>*@
 
-        <li>Author: @Model.Author</li>
-
-        <li>Publisher: @Model.Publisher</li>
-
-        <li>ISBN: @Model.ISBN</li>
-
-        <li>Classification: @Model.Classification</li>
-
-        <li>Page Count: @Model.PageCount</li>
-
-        <li>Price: @Model.Price.ToString("$#,##0.00")</li>
+        @if (Model.INTERSECTION_RELATED == 1)
+        {
+            <li>Work Zone Related</li>
+        }
+        @if (Model.WORK_ZONE_RELATED == 1)
+        {
+            <li>Work Zone Related</li>
+        }
+        @if (Model.PEDESTRIAN_INVOLVED == 1)
+        {
+            <li>Pedestrian Involved</li>
+        }
+        @if (Model.BICYCLIST_INVOLVED == 1)
+        {
+            <li>Bicyclist Involved</li>
+        }
+        @if (Model.MOTORCYCLE_INVOLVED == 1)
+        {
+            <li>Motorcyle Involved</li>
+        }
+        @if (Model.IMPROPER_RESTRAINT == 1)
+        {
+            <li>Improper Restraint</li>
+        }
+        @if (Model.UNRESTRAINED == 1)
+        {
+            <li>Unrestrained</li>
+        }
+        @if (Model.DUI == 1)
+        {
+            <li>DUI</li>
+        }
+        @if (Model.WILD_ANIMAL_RELATED == 1)
+        {
+            <li>Wild Animal Related</li>
+        }
+        @if (Model.DOMESTIC_ANIMAL_RELATED == 1)
+        {
+            <li>Domestic Animal Related</li>
+        }
+        @if (Model.OVERTURN_ROLLOVER == 1)
+        {
+            <li>Overturn/Rollever</li>
+        }
+        @if (Model.COMMERCIAL_MOTOR_VEH_INVOLVED == 1)
+        {
+            <li>Commercial Vehicle Involved</li>
+        }
+        @if (Model.TEENAGE_DRIVER_INVOLVED == 1)
+        {
+            <li>Teenage Driver Involved</li>
+        }
+        @if (Model.OLDER_DRIVER_INVOLVED == 1)
+        {
+            <li>Older Driver Involved</li>
+        }
+        @if (Model.NIGHT_DARK_CONDITION == 1)
+        {
+            <li>Night/Dark</li>
+        }
+        @if (Model.SINGLE_VEHICLE == 1)
+        {
+            <li>Single Vehicle</li>
+        }
+        @if (Model.DISTRACTED_DRIVING == 1)
+        {
+            <li>Distracted Driving</li>
+        }
+        @if (Model.DROWSY_DRIVING == 1)
+        {
+            <li>Drowsy Driving</li>
+        }
+        @if (Model.ROADWAY_DEPARTURE == 1)
+        {
+            <li>Roadway Departure</li>
+        }
 
     </ul>
-
-    <form method="post" asp-page="/Cart">
-
-        <input type="hidden" asp-for="@Model.BookId" />
-        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
-
-
-        <span class="card-text">
-            <button type="submit" class="btn btn-success btn-sm float-end">Add to Cart</button>
-        </span>
-    </form>
-</div>*@
+</div>

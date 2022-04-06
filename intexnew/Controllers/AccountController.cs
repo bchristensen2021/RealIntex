@@ -19,6 +19,7 @@ namespace BookStore.Controllers
             userManager = um;
             signInManager = sim;
         }
+
         //Admin Login Setup
         [HttpGet]
         public IActionResult Login(string returnUrl)

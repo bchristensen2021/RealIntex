@@ -20,27 +20,38 @@ namespace intexnew.Controllers
         }
 
 
-        //public IActionResult Index()
-        //{
-        //    var blah = _repo.Crashes
-        //        .ToList();
-        //    return View(blah);
-        //}
 
-        //[HttpGet]
-        //public IActionResult Add()
-        //{
-        //    return View("");
-        //}
-        //[HttpPost]
+        public IActionResult Index()
+        {
+            //var blah = repo.Crashes
+            //    .ToList();
+            return View();
+        }
 
 
-
-        //public IActionResult Privacy()
+        //public IActionResult CrashCardsIndex()
         //{
         //    return View();
         //}
-        public IActionResult Index(string road, int pageNum = 1)
+
+        
+
+
+
+        [HttpGet]
+        public IActionResult Add()
+        {
+            return View("");
+        }
+        [HttpPost]
+
+
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+        public IActionResult CrashCardsIndex(string road, int pageNum = 1)
         {
 
             int pageSize = 10;

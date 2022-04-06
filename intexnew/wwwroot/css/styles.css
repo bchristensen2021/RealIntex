@@ -4886,8 +4886,8 @@ textarea.form-control-lg {
 
 .badge {
   display: inline-block;
-  padding: 0.35em 0.65em;
-  font-size: 0.75em;
+  padding: 0.55em 0.85em;
+  font-size: 3em;
   font-weight: 700;
   line-height: 1;
   color: #fff;
@@ -11346,7 +11346,7 @@ video.bg-video {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
+/*  background-color: rgba(0, 0, 0, 0.85);*/
 }
 .masthead .masthead-content {
   position: relative;
