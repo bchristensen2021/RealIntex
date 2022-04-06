@@ -28,5 +28,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Shared\Components\" />
+    <Folder Include="wwwroot\asset\" />
+    <Folder Include="wwwroot\asset\pm4\" />
+    <Folder Include="wwwroot\asset\img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\asset\" />
+    <Content Remove="wwwroot\asset\pm4\" />
+    <Content Remove="wwwroot\asset\img\" />
   </ItemGroup>
 </Project>
