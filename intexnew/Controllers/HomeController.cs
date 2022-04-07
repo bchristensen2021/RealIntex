@@ -21,13 +21,10 @@ namespace intexnew.Controllers
 
         public IActionResult Index()
         {
-            //var blah = repo.Crashes
-            //    .ToList();
             return View();
         }
 
-     
-        public IActionResult CrashCardsIndex(int type, int pageNum = 1)
+        public IActionResult CrashCardsIndex(int severity = 0, int pageNum = 1)
         {
 
             int pageSize = 25;
@@ -35,18 +32,19 @@ namespace intexnew.Controllers
             var x = new CrashesViewModel
             {
                 Crashes = repo.Crashes
-                //.Where(r => r.CRASH_SEVERITY_ID == type)
+                .Where(r => r.CRASH_SEVERITY_ID == severity || severity == 0)
                 .OrderBy(r => r.CRASH_SEVERITY_ID)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
                 PageInfo = new PageInfo
                 {
-                    //TotalNumCrashes =
-                    //(type == null
-                    //    ? repo.Crashes.Count()
-                    //    : repo.Crashes.Where(x => x.CRASH_SEVERITY_ID == type).Count()),
-                    TotalNumCrashes = repo.Crashes.Count(),
+                    TotalNumCrashes =
+                    (severity == 0
+                        ? repo.Crashes.Count()
+                        : repo.Crashes.Where(x => x.CRASH_SEVERITY_ID == severity).Count()),
+                    //TotalNumCrashes = repo.Crashes.Where(x => x.CRASH_SEVERITY_ID == severity).Count(),
+                    //TotalNumCrashes = repo.Crashes.Count(),
                     CrashesPerPage = pageSize,
                     CurrentPage = pageNum
                 }

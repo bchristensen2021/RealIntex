@@ -3,11 +3,21 @@
 *@
 
 @model CrashesViewModel
+@*<div page-blah="@Model.PageInfo" page-action="CrashCardsIndex" page-classes-enabled="true"
+         page-class="btn" page-class-normal="btn-outline-dark"
+         page-class-selected="btn-primary" class="btn-group pull-right m-1"></div>
+    <div>*@
 
-<div page-blah="@Model.PageInfo" page-action="CrashCardsIndex" page-classes-enabled="true"
-     page-class="btn" page-class-normal="btn-outline-dark"
-     page-class-selected="btn-primary" class="btn-group pull-right m-1"></div>
-<div>
+<a asp-action="CrashCardsIndex" asp-route-pageNum="@(Model.PageInfo.CurrentPage - 1)"
+   class="btn btn-primary btn-group pull-right m-1">
+    Previous
+</a>
+<a asp-action="CrashCardsIndex"
+   asp-route-pageNum="@(Model.PageInfo.CurrentPage + 1)"
+   class="btn btn-primary btn-group pull-right m-1">
+    Next
+</a>
+
 @foreach (Crash c in Model.Crashes)
 {
     <partial name="CrashSummary" model="c" />

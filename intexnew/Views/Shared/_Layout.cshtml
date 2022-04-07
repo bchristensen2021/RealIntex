@@ -33,8 +33,18 @@
     </header>
 
     <div class="row m-1 p-1">
-        <div id="types" class="col-3">
-            <vc:types></vc:types>
+        <!--<div class="col-2">-->
+            @*<h6>Filter by Severity: </h6>
+            <ul style="list-style-type:none ">
+                <li style="line-height:2em">No Injury</li style="line-height:2em">
+                <li>Possible Injury</li>
+                <li>Suspected Minor Injury</li>
+                <li>Suspected Serious Injury</li>
+                <li>Fatal</li>
+            </ul>*@
+        <!--</div>-->
+        <div id="types" class="col-2">
+            <vc:severity></vc:severity>
         </div>
 
         <div class="col-8">
@@ -53,11 +63,11 @@
         </main>
     </div>*@
 
-    <footer class="border-top footer text-muted">
+    @*<footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - intexnew - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

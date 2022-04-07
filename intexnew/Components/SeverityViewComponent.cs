@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace intexnew.Components
 {
-    public class SeverityViewComponent :ViewComponent
+    public class SeverityViewComponent : ViewComponent
     {
         private ICrashRepository repo { get; set; }
 
@@ -17,7 +17,7 @@ namespace intexnew.Components
 
         public IViewComponentResult Invoke()
         {
-            ViewBag.SelectCategory = RouteData?.Values["Severity"];
+            //ViewBag.SelectCategory = RouteData?.Values["Severity"];
             var types = repo.Crashes
                 .Select(x => x.CRASH_SEVERITY_ID)
                 .Distinct()
