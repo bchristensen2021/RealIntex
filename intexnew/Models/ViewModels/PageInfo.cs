@@ -13,5 +13,10 @@ namespace intexnew.Models.ViewModels
 
         //Figures out how many pages needed
         public int TotalPages => (int)Math.Ceiling((double)TotalNumCrashes / CrashesPerPage);
+
+        public bool HasPreviousPage => CurrentPage > 1;
+
+        public bool HasNextPage => CurrentPage < TotalPages;
     }
+
 }
