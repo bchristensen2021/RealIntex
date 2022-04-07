@@ -9,7 +9,8 @@ namespace intexnew.Models
 
         //included to allow CRUD from administration end
         public void SaveCrash(Crash C);
-        public void CreateCrash(Crash C);
-        public void DeleteCrash(Crash C);     
+        public void AddCrash(Crash C);
+        public void DeleteCrash(Crash C);
+        public void UpdateCrash(Crash C);
     }
 }

@@ -21,7 +21,7 @@ namespace intexnew.Models
             Context.SaveChanges();
         }
 
-        public void CreateCrash(Crash c)
+        public void AddCrash(Crash c)
         {
             Context.Add(c);
             Context.SaveChanges();

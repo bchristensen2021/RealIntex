@@ -102,9 +102,9 @@ namespace intexnew
                 endpoints.MapControllerRoute(
                     name: "Paging",
                     pattern: "Page{pageNum}",
-                    defaults: new { Controller = "Home", action = "CrashList", pageNum = 1 });
+                    defaults: new { Controller = "Admin", action = "CrashList", pageNum = 1 });
 
-                endpoints.MapControllerRoute("category", "{category}", new { Controller = "Home", action = "CrashList", pageNum = 1 });
+                endpoints.MapControllerRoute("category", "{category}", new { Controller = "Admin", action = "CrashList", pageNum = 1 });
 
 
 
@@ -112,8 +112,8 @@ namespace intexnew
 
                 endpoints.MapRazorPages();
 
-                endpoints.MapBlazorHub();
-                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Home/CrashList");
+                //endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/CrashList");
             });
 
             IdentitySeedData.EnsurePopulated(app);
