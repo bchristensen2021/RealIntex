@@ -44,9 +44,9 @@
                         <input asp-for="Password" class="form-control" type="password" />
                     </div>
 
-                    <button class="btn btn-primary" type="submit">Login</button>
-
-                    <input type="hidden" asp-for="ReturnUrl" />
+                    @*<button class="btn btn-primary" type="submit">Login</button>*@
+                    <a class="btn btn-dark m-3" type=submit asp-area="" asp-controller="Home" asp-action="CrashList">Login</a>
+                    @*<input type="hidden" asp-for="ReturnUrl" />*@
                 </form>
             </div>
 

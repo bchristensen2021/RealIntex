@@ -1,0 +1,45 @@
+﻿@* Used for testing:
+    <h1>@Model.PageInfo.TotalPages</h1>
+*@
+@page "/CrashList"
+@model intexnew.Models.ViewModels.CrashesViewModel
+@using Microsoft.AspNetCore.Identity 
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@*<div page-blah="@Model.PageInfo" page-action="CrashCardsIndex" page-classes-enabled="true"
+         page-class="btn" page-class-normal="btn-outline-dark"
+         page-class-selected="btn-primary" class="btn-group pull-right m-1"></div>
+    <div>*@
+
+@{
+    ViewData["Title"] = "Admin Crash List";
+
+    var prevDisabled = !Model.PageInfo.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.PageInfo.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="CrashList" asp-route-pageNum="@(Model.PageInfo.CurrentPage - 1)"
+   class="btn btn-primary btn-group pull-right m-1 @prevDisabled">
+    Previous
+</a>
+<p class="btn btn-light btn-group pull-right m-1">Page @Model.PageInfo.CurrentPage</p>
+<a asp-action="CrashList"
+   asp-route-pageNum="@(Model.PageInfo.CurrentPage + 1)"
+   class="btn btn-primary btn-group pull-right m-1 @nextDisabled">
+    Next
+</a>
+
+@foreach (Crash c in Model.Crashes)
+{
+    <partial name="CrashSummary" model="c" />
+
+}
+@*</div>*@
+@*<a asp-action="CrashCardsIndex" asp-route-pageNum="1">1</a>*@
+
+
+
+
+
+

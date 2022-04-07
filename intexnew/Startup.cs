@@ -98,13 +98,22 @@ namespace intexnew
                     defaults: new { Controller = "Home", action = "CrashCardIndex", pageNum = 1 });
 
                 endpoints.MapControllerRoute("category", "{category}", new { Controller = "Home", action = "CrashCardIndex", pageNum = 1 });
+                
+                endpoints.MapControllerRoute(
+                    name: "Paging",
+                    pattern: "Page{pageNum}",
+                    defaults: new { Controller = "Home", action = "CrashList", pageNum = 1 });
+
+                endpoints.MapControllerRoute("category", "{category}", new { Controller = "Home", action = "CrashList", pageNum = 1 });
+
+
 
                 endpoints.MapDefaultControllerRoute();
 
                 endpoints.MapRazorPages();
 
                 endpoints.MapBlazorHub();
-                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
+                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Home/CrashList");
             });
 
             IdentitySeedData.EnsurePopulated(app);
