@@ -103,14 +103,14 @@
         else
         {
             <tr>
-                <td colspan="5" class="text-center">No Books</td>
+                <td colspan="5" class="text-center">No crashes</td>
             </tr>
         }
     </tbody>
 
 </table>
 
-<NavLink class="btn btn-primary" href="/admin/books/create">Create</NavLink>
+<NavLink class="btn btn-primary" href="/admin/CRASH_ID/create">Create</NavLink>
 
 @code {
     public ICrashRepository repo => Service;
@@ -124,9 +124,9 @@
     {
         CrashData = await repo.Crashes.ToListAsync();
     }
-    public string GetDetailsUrl(long BookId) => $"/admin/books/details/{BookId}";
+    public string GetDetailsUrl(long CRASH_ID) => $"/admin/Crashes/details/{CRASH_ID}";
 
-    public string GetEditUrl(long BookId) => $"/admin/books/edit/{BookId}";
+    public string GetEditUrl(long CRASH_ID) => $"/admin/Crashes/edit/{CRASH_ID}";
 
     public async Task RemoveCrash(Crash c)
     {

@@ -1,32 +1,23 @@
-﻿
-@model CrashesViewModel
-@* Used for testing:
+﻿@* Used for testing:
     <h1>@Model.PageInfo.TotalPages</h1>
 *@
 
-@*This is a git test*@
+@model CrashesViewModel
 
+<div page-blah="@Model.PageInfo" page-action="CrashCardsIndex" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primary" class="btn-group pull-right m-1"></div>
+<div>
 @foreach (Crash c in Model.Crashes)
 {
     <partial name="CrashSummary" model="c" />
 
 }
-
-<div page-num="@Model.PageInfo" page-action="Index" page-classes-enabled="true"
-     page-class="btn" page-class-normal="btn-outline-dark"
-     page-class-selected="btn-primary" class="btn-group pull-right m-1">
 </div>
+@*<a asp-action="CrashCardsIndex" asp-route-pageNum="1">1</a>*@
 
-@*<h3>@r.Title</h3>
 
-    <ul>
-        <li>@r.Author</li>
-        <li>@r.Price</li>
-        <li>@r.Category</li>
-        <li>@r.NumPage</li>
-        <li>@r.Publisher</li>
-        <li>@r.ISBN</li>
-    </ul>*@
 
-<br />
+
+
 

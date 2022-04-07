@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Infrastructure
 {
-    [HtmlTargetElement("div", Attributes = "page-num")]
+    [HtmlTargetElement("div", Attributes = "page-blah")]
     public class PaginationTagHelper : TagHelper
     {
         //Dynamically create page links
@@ -26,7 +26,7 @@ namespace BookStore.Infrastructure
         public ViewContext vc { get; set; }
 
 
-        public PageInfo PageNum { get; set; }
+        public PageInfo PageBlah { get; set; }
         public string PageAction { get; set; }
 
         //these are for using bootstrap css classes
@@ -41,18 +41,17 @@ namespace BookStore.Infrastructure
 
             TagBuilder final = new TagBuilder("div");
 
-            for (int i = 0; i < PageNum.TotalPages; i++)
+            for (int i = 1; i <= PageBlah.TotalPages; i++)
             {
                 TagBuilder tb = new TagBuilder("a");
 
-                tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = i + 1 });
+                tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = i });
                 if (PageClassesEnabled)
                 {
                     tb.AddCssClass(PageClass);
-                    tb.AddCssClass(i + 1 == PageNum.CurrentPage
-                        ? PageClassSelected : PageClassNormal);
+                    tb.AddCssClass(i == PageBlah.CurrentPage ? PageClassSelected : PageClassNormal);
                 }
-                tb.InnerHtml.Append((i + 1).ToString() + " ");
+                tb.InnerHtml.Append(i.ToString());
 
                 final.InnerHtml.AppendHtml(tb);
             }

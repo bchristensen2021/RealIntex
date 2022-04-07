@@ -8,6 +8,8 @@
   <ItemGroup>
     <None Remove="Models\" />
     <None Remove="Views\Shared\Components\" />
+    <None Remove="Components\" />
+    <None Remove="Views\Shared\Components\Types\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -29,8 +31,10 @@
   <ItemGroup>
     <Folder Include="Views\Shared\Components\" />
     <Folder Include="wwwroot\asset\" />
-    <Folder Include="wwwroot\asset\pm4\" />
+    <Folder Include="wwwroot\asset\mp4\" />
     <Folder Include="wwwroot\asset\img\" />
+    <Folder Include="Components\" />
+    <Folder Include="Views\Shared\Components\Types\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\asset\" />

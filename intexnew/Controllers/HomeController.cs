@@ -19,8 +19,6 @@ namespace intexnew.Controllers
             repo = temp;
         }
 
-
-
         public IActionResult Index()
         {
             //var blah = repo.Crashes
@@ -28,47 +26,27 @@ namespace intexnew.Controllers
             return View();
         }
 
-
-        //public IActionResult CrashCardsIndex()
-        //{
-        //    return View();
-        //}
-
-        
-
-
-
-        [HttpGet]
-        public IActionResult Add()
-        {
-            return View("");
-        }
-        [HttpPost]
-
-
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-        public IActionResult CrashCardsIndex(string road, int pageNum = 1)
+     
+        public IActionResult CrashCardsIndex(int type, int pageNum = 1)
         {
 
-            int pageSize = 10;
+            int pageSize = 25;
 
             var x = new CrashesViewModel
             {
                 Crashes = repo.Crashes
-                .Where(r => r.MAIN_ROAD_NAME == road || road == null)
-                .OrderBy(r => r.MAIN_ROAD_NAME)
+                //.Where(r => r.CRASH_SEVERITY_ID == type)
+                .OrderBy(r => r.CRASH_SEVERITY_ID)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
+
                 PageInfo = new PageInfo
                 {
-                    TotalNumCrashes =
-                    (road == null
-                        ? repo.Crashes.Count()
-                        : repo.Crashes.Where(x => x.MAIN_ROAD_NAME == road).Count()),
+                    //TotalNumCrashes =
+                    //(type == null
+                    //    ? repo.Crashes.Count()
+                    //    : repo.Crashes.Where(x => x.CRASH_SEVERITY_ID == type).Count()),
+                    TotalNumCrashes = repo.Crashes.Count(),
                     CrashesPerPage = pageSize,
                     CurrentPage = pageNum
                 }
