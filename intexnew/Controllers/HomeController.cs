@@ -25,11 +25,6 @@ namespace intexnew.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         public IActionResult CrashCardsIndex(int severity = 0, int pageNum = 1)
         {
 

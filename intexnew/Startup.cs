@@ -90,8 +90,7 @@ namespace intexnew
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints for CrashCardsIndex
-                endpoints.MapControllerRoute("categorypage", "{category}/Page{pageNum}", new { Controller = "Home", action = "CrashCardIndex" });
+                endpoints.MapControllerRoute("categorypage", "{category}/Page{pageNum}", new { Controller = "Home", action = "Index" });
 
                 endpoints.MapControllerRoute(
                     name: "Paging",
@@ -99,11 +98,7 @@ namespace intexnew
                     defaults: new { Controller = "Home", action = "CrashCardIndex", pageNum = 1 });
 
                 endpoints.MapControllerRoute("category", "{category}", new { Controller = "Home", action = "CrashCardIndex", pageNum = 1 });
-
-
-                //endpoints for CrashList (admin)
-                endpoints.MapControllerRoute("categorypage", "{category}/Page{pageNum}", new { Controller = "Home", action = "CrashList" });
-
+                
                 endpoints.MapControllerRoute(
                     name: "Paging",
                     pattern: "Page{pageNum}",

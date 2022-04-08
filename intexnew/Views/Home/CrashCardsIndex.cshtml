@@ -15,7 +15,6 @@
     var nextDisabled = !Model.PageInfo.HasNextPage ? "disabled" : "";
 }
 
-<!--asp-route-severity="" needs be included somehow-->
 <a asp-action="CrashCardsIndex" asp-route-pageNum="@(Model.PageInfo.CurrentPage - 1)"
    class="btn btn-primary btn-group pull-right m-1 @prevDisabled">
     Previous
