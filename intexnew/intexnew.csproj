@@ -10,8 +10,6 @@
     <None Remove="Views\Shared\Components\" />
     <None Remove="Components\" />
     <None Remove="Views\Shared\Components\Types\" />
-    <None Remove="Views\Shared\Components\AdminSeverity\" />
-    <None Remove="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -36,9 +34,7 @@
     <Folder Include="wwwroot\asset\mp4\" />
     <Folder Include="wwwroot\asset\img\" />
     <Folder Include="Components\" />
-    <Folder Include="Views\Shared\Components\Severity\" />
-    <Folder Include="Views\Shared\Components\AdminSeverity\" />
-    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Shared\Components\Types\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\asset\" />
