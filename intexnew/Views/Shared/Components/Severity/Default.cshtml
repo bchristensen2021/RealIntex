@@ -12,6 +12,6 @@
     @foreach (int t in Model)
     {
         <a asp-controller="Home" asp-action="CrashCardsIndex" asp-route-severity="@t" asp-route-pageNum="1"
-            class="btn @(ViewBag.Selected == t ? "btn-primary" : "btn-outline-secondary") btn-block">@t</a>
+            class="btn @(ViewBag.SelectCategory == t ? "btn-primary" : "btn-outline-secondary") btn-block">@t</a>
     }
 </div>

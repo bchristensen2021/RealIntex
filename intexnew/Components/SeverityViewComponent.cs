@@ -17,7 +17,8 @@ namespace intexnew.Components
 
         public IViewComponentResult Invoke()
         {
-            //ViewBag.SelectCategory = RouteData?.Values["Severity"];
+            ViewBag.SelectCategory = RouteData?.Values["severity"];
+
             var types = repo.Crashes
                 .Select(x => x.CRASH_SEVERITY_ID)
                 .Distinct()
