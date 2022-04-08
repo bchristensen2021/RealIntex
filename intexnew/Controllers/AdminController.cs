@@ -74,14 +74,8 @@ namespace intexnew.Controllers
 
         //CRASHLIST
 
-        [HttpGet]
-        public IActionResult CrashList()
-        {
-            return View();
-        }
-
         [Authorize]
-        [HttpPost]
+        //[HttpPost]
         public IActionResult CrashList(int severity = 0, int pageNum = 1)
         {
 

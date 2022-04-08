@@ -111,15 +111,14 @@ namespace intexnew
 
                 endpoints.MapControllerRoute("category", "{category}", new { Controller = "Admin", action = "CrashList", pageNum = 1 });
 
-                //endpoints for admin login
-                endpoints.MapControllerRoute("Login", "admin/CrashList");
+
 
                 endpoints.MapDefaultControllerRoute();
 
                 endpoints.MapRazorPages();
 
                 //endpoints.MapBlazorHub();
-                //endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/CrashList");
+                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/CrashList");
             });
 
             IdentitySeedData.EnsurePopulated(app);

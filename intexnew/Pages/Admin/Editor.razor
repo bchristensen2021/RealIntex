@@ -1,0 +1,223 @@
+﻿@*@page "/admin/books/edit/{Crash_Id:long}"
+@page "/admin/books/create"
+@inherits OwningComponentBase<ICrashRepository>
+
+<style>
+    div.validation-message {
+        color: rgb(220,53,69);
+        font-weight: 500
+    }
+</style>
+
+<h3 class="bg-@ThemeColor text-white text-center p-1">@TitleText a Crash</h3>
+
+<EditForm Model="fr" OnValidSubmit="SaveProject">
+
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+
+    <div class="form-group">
+        <label>Crash ID</label>
+        <input class="form-control" disabled value="@fr.CRASH_ID" />
+    </div>
+
+    <div class="form-group">
+        <label>Year:</label>
+        <ValidationMessage For="@(() => fr.YEAR)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.YEAR"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Month:</label>
+        <ValidationMessage For="@(() => fr.MONTH)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.MONTH"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Day:</label>
+        <ValidationMessage For="@(() => fr.DAY)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.DAY"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Time:</label>
+        <ValidationMessage For="@(() => fr.TIME)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="fr.TIME"></InputText>
+    </div>
+    <div class="form-group">
+        <label>UTM Northing:</label>
+        <ValidationMessage For="@(() => fr.LAT_UTM_Y)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.LAT_UTM_Y"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>UTM Easting:</label>
+        <ValidationMessage For="@(() => fr.LONG_UTM_X)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.LONG_UTM_X"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Route:</label>
+        <ValidationMessage For="@(() => fr.ROUTE)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.ROUTE"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Milepoint:</label>
+        <ValidationMessage For="@(() => fr.MILEPOINT)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.MILEPOINT"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Main Road Name:</label>
+        <ValidationMessage For="@(() => fr.MAIN_ROAD_NAME)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="fr.MAIN_ROAD_NAME"></InputText>
+    </div>
+    <div class="form-group">
+        <label>City:</label>
+        <ValidationMessage For="@(() => fr.CITY)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="fr.CITY"></InputText>
+    </div>
+    <div class="form-group">
+        <label>County:</label>
+        <ValidationMessage For="@(() => fr.COUNTY_NAME)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="fr.COUNTY_NAME"></InputText>
+    </div>
+    <div class="form-group">
+        <label>Severity Code:</label>
+        <ValidationMessage For="@(() => fr.CRASH_SEVERITY_ID)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.CRASH_SEVERITY_ID"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Work Zone Related:</label>
+        <ValidationMessage For="@(() => fr.WORK_ZONE_RELATED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.WORK_ZONE_RELATED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Pedestrian Involved:</label>
+        <ValidationMessage For="@(() => fr.PEDESTRIAN_INVOLVED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.PEDESTRIAN_INVOLVED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Bicyclist Involved:</label>
+        <ValidationMessage For="@(() => fr.BICYCLIST_INVOLVED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.BICYCLIST_INVOLVED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Motorcycle Involved:</label>
+        <ValidationMessage For="@(() => fr.MOTORCYCLE_INVOLVED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.MOTORCYCLE_INVOLVED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Improper Restraint:</label>
+        <ValidationMessage For="@(() => fr.IMPROPER_RESTRAINT)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.IMPROPER_RESTRAINT"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Unrestrained:</label>
+        <ValidationMessage For="@(() => fr.UNRESTRAINED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.UNRESTRAINED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>DUI:</label>
+        <ValidationMessage For="@(() => fr.DUI)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.DUI"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Intersection Related:</label>
+        <ValidationMessage For="@(() => fr.INTERSECTION_RELATED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.INTERSECTION_RELATED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Wild Animal Related:</label>
+        <ValidationMessage For="@(() => fr.WILD_ANIMAL_RELATED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.WILD_ANIMAL_RELATED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Domestic Animal Related:</label>
+        <ValidationMessage For="@(() => fr.DOMESTIC_ANIMAL_RELATED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.DOMESTIC_ANIMAL_RELATED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Overturn/Rollover:</label>
+        <ValidationMessage For="@(() => fr.OVERTURN_ROLLOVER)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.OVERTURN_ROLLOVER"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Commercial Vehicle Involved:</label>
+        <ValidationMessage For="@(() => fr.COMMERCIAL_MOTOR_VEH_INVOLVED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.COMMERCIAL_MOTOR_VEH_INVOLVED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Teenage Driver Involved:</label>
+        <ValidationMessage For="@(() => fr.TEENAGE_DRIVER_INVOLVED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.TEENAGE_DRIVER_INVOLVED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Older Driver Involved:</label>
+        <ValidationMessage For="@(() => fr.OLDER_DRIVER_INVOLVED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.OLDER_DRIVER_INVOLVED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Night/Dark:</label>
+        <ValidationMessage For="@(() => fr.NIGHT_DARK_CONDITION)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.NIGHT_DARK_CONDITION"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Single Vehicle:</label>
+        <ValidationMessage For="@(() => fr.SINGLE_VEHICLE)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.SINGLE_VEHICLE"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Distracted Driving:</label>
+        <ValidationMessage For="@(() => fr.DISTRACTED_DRIVING)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.DISTRACTED_DRIVING"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Drowsy Driving:</label>
+        <ValidationMessage For="@(() => fr.DROWSY_DRIVING)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.DROWSY_DRIVING"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Roadway Departure:</label>
+        <ValidationMessage For="@(() => fr.ROADWAY_DEPARTURE)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="fr.ROADWAY_DEPARTURE"></InputNumber>
+    </div>
+
+    <button type="submit" class="btn btn-@ThemeColor">Save</button>
+    <NavLink class="btn btn-secondary" href="/admin/books">Cancel</NavLink>
+
+</EditForm>
+
+@code {
+
+    [Parameter]
+    public long Crash_Id { get; set; } = 0;
+
+    public string ThemeColor => Crash_Id == 0 ? "primary" : "warning";
+    public string TitleText => Crash_Id == 0 ? "Add" : "Edit";
+
+    public Crash fr { get; set; } = new Crash();
+
+    public ICrashRepository repo => Service;
+
+    protected override void OnParametersSet()
+    {
+        if (Crash_Id != 0)
+        {
+            fr = repo.Crashes.FirstOrDefault(x => x.CRASH_ID == Crash_Id);
+        }
+    }
+
+    public void SaveProject()
+    {
+        if (Crash_Id == 0)
+        {
+            repo.CreateCrash(fr);
+        }
+        else
+        {
+            repo.SaveCrash(fr);
+        }
+
+        NavManager.NavigateTo("/admin/crashes");
+    }
+
+    [Inject]
+    public NavigationManager NavManager { get; set; }
+}*@
+
+
+

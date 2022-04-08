@@ -1,0 +1,85 @@
+﻿@page "/admin/books/details/{Crash_Id:long}"
+
+<h3 class="bg-info text-white text-center p-1">Details</h3>
+
+<table class="table table-sm table-bordered table-striped">
+    <tbody>
+        <tr><th>Crash ID:</th><td>@c.CRASH_ID</td></tr>
+        <tr><th>Year:</th><td>@c.YEAR</td></tr>
+        <tr><th>Month:</th><td>@c.MONTH</td></tr>
+        <tr><th>Day:</th><td>@c.DAY</td></tr>
+        <tr><th>Time:</th><td>@c.TIME</td></tr>
+        <tr><th>UTM Northing:</th><td>@c.LAT_UTM_Y</td></tr>
+        <tr><th>UTM Easting</th><td>@c.LONG_UTM_X</td></tr>
+        <tr><th>Route:</th><td>@c.ROUTE</td></tr>
+        <tr><th>Milepoint:</th><td>@c.MILEPOINT</td></tr>
+          <tr><th>Main Road Name:</th><td>@c.MAIN_ROAD_NAME</td></tr>
+        <tr><th>City:</th><td>@c.CITY</td></tr>
+        <tr><th>County:</th><td>@c.COUNTY_NAME</td></tr>
+        <tr><th>Severity Code:</th><td>@c.CRASH_SEVERITY_ID</td></tr>
+               
+        <tr>
+                @if (c.WORK_ZONE_RELATED == 1)
+                    {<td>Work Zone Related</td>}
+                @if (c.PEDESTRIAN_INVOLVED == 1)
+                    {<td>Pedestrian Involved</td>}
+                @if (c.BICYCLIST_INVOLVED == 1)
+                    {<td>Bicyclist Involved</td>}
+                @if (c.MOTORCYCLE_INVOLVED == 1)
+                    {<td>Motorcyle Involved</td>}
+                @if (c.IMPROPER_RESTRAINT == 1)
+                    {<td>Improper Restraint</td>}
+                @if (c.UNRESTRAINED == 1)
+                    {<td>Unrestrained</td>}
+                @if (c.DUI == 1)
+                    {<td>DUI</td>}
+                @if (c.INTERSECTION_RELATED == 1)
+                    {<td>Intersection Related</td>}
+                @if (c.WILD_ANIMAL_RELATED == 1)
+                    {<td>Wild Animal Related</td>}
+                @if (c.DOMESTIC_ANIMAL_RELATED == 1)
+                    {<td>Domestic Animal Related</td>}
+                @if (c.OVERTURN_ROLLOVER == 1)
+                    {<td>Overturn/Rollever</td>}
+                @if (c.COMMERCIAL_MOTOR_VEH_INVOLVED == 1)
+                    {<td>Commercial Vehicle Involved</td>}
+                @if (c.TEENAGE_DRIVER_INVOLVED == 1)
+                    {<td>Teenage Driver Involved</td>}
+                @if (c.OLDER_DRIVER_INVOLVED == 1)
+                    {<td>Older Driver Involved</td>}
+                @if (c.NIGHT_DARK_CONDITION == 1)
+                    {<td>Night/Dark</td>}
+                @if (c.SINGLE_VEHICLE == 1)
+                    {<td>Single Vehicle</td>}
+                @if (c.DISTRACTED_DRIVING == 1)
+                    {<td>Distracted Driving</td>}
+                @if (c.DROWSY_DRIVING == 1)
+                    {<td>Drowsy Driving</td>}
+                @if (c.ROADWAY_DEPARTURE == 1)
+                    {<td>Roadway Departure</td>}
+        </tr>
+    </tbody>
+</table>
+
+
+<NavLink class="btn btn-warning" href="@EditUrl">Edit</NavLink>
+<NavLink class="btn btn-secondary" href="/admin/Crashes">Back</NavLink>
+
+@code {
+
+    [Inject]
+    public ICrashRepository repo { get; set; }
+
+    [Parameter]
+    public long Crash_Id { get; set; }
+    public Crash c { get; set; }
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        {
+            c = repo.Crashes.FirstOrDefault(x => x.CRASH_ID == Crash_Id);
+        }
+    }
+
+    public string EditUrl => $"/admin/Crashes/edit/{c.CRASH_ID}";
+}

@@ -1,0 +1,136 @@
+﻿@page "/admin/crashes"
+@page "/admin"
+
+@inherits OwningComponentBase<ICrashRepository>
+
+<table class="table caption-top table-sm table-striped table-bordered">
+
+    <caption>Crash List</caption>
+    <thead>
+        <tr>
+            <th>Crash ID</th>
+            <th>Year</th>
+            <th>Month</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th>UTM Northing</th>
+            <th>UTM Easting</th>
+            <th>Route</th>
+            <th>Milepoint</th>
+            <th>Main Road Name</th>
+            <th>City</th>
+            <th>County</th>
+            <th>Severity Code</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @if (CrashData?.Count() > 0)
+        {
+            //list books
+            @foreach (Crash c in CrashData)
+            {
+                <tr>
+                    <td>@c.CRASH_ID</td>
+                    <td>@c.YEAR</td>
+                    <td>@c.MONTH</td>
+                    <td>@c.DAY</td>
+                    <td>@c.TIME</td>
+                    <td>@c.LAT_UTM_Y</td>
+                    <td>@c.LONG_UTM_X</td>
+                    <td>@c.ROUTE</td>
+                    <td>@c.MILEPOINT</td>
+                    <td>@c.MAIN_ROAD_NAME</td>
+                    <td>@c.CITY</td>
+                    <td>@c.COUNTY_NAME</td>
+                    <td>@c.CRASH_SEVERITY_ID</td>                   
+
+                    @if (c.WORK_ZONE_RELATED == 1)
+                        {<td>Work Zone Related</td>}
+                    @if (c.PEDESTRIAN_INVOLVED == 1)
+                        {<td>Pedestrian Involved</td>}
+                    @if (c.BICYCLIST_INVOLVED == 1)
+                        {<td>Bicyclist Involved</td>}
+                    @if (c.MOTORCYCLE_INVOLVED == 1)
+                        {<td>Motorcyle Involved</td>}
+                    @if (c.IMPROPER_RESTRAINT == 1)
+                        {<td>Improper Restraint</td>}
+                    @if (c.UNRESTRAINED == 1)
+                        {<td>Unrestrained</td>}
+                    @if (c.DUI == 1)
+                        {<td>DUI</td>}
+                    @if (c.INTERSECTION_RELATED == 1)
+                        {<td>Intersection Related</td>}
+                    @if (c.WILD_ANIMAL_RELATED == 1)
+                        {<td>Wild Animal Related</td>}
+                    @if (c.DOMESTIC_ANIMAL_RELATED == 1)
+                        {<td>Domestic Animal Related</td>}
+                    @if (c.OVERTURN_ROLLOVER == 1)
+                        {<td>Overturn/Rollever</td>}
+                    @if (c.COMMERCIAL_MOTOR_VEH_INVOLVED == 1)
+                        {<td>Commercial Vehicle Involved</td>}
+                    @if (c.TEENAGE_DRIVER_INVOLVED == 1)
+                        {<td>Teenage Driver Involved</td>}
+                    @if (c.OLDER_DRIVER_INVOLVED == 1)
+                        {<td>Older Driver Involved</td>}
+                    @if (c.NIGHT_DARK_CONDITION == 1)
+                        {<td>Night/Dark</td>}
+                    @if (c.SINGLE_VEHICLE == 1)
+                        {<td>Single Vehicle</td>}
+                    @if (c.DISTRACTED_DRIVING == 1)
+                        {<td>Distracted Driving</td>}
+                    @if (c.DROWSY_DRIVING == 1)
+                        {<td>Drowsy Driving</td>}
+                    @if (c.ROADWAY_DEPARTURE == 1)
+                        {<td>Roadway Departure</td>}
+                   
+
+                    <td>
+                        <NavLink class="btn btn-info btn-sm" href="@GetDetailsUrl(c.CRASH_ID)">Details</NavLink>
+                    </td>
+                    <td>
+                        <NavLink class="btn btn-warning btn-sm" href="@GetEditUrl(c.CRASH_ID)">Edit</NavLink>
+                    </td>
+                    <td>
+                        <NavLink class="btn btn-danger btn-sm" @onclick="@(x => RemoveCrash(c))">Delete</NavLink>
+                    </td>
+
+                </tr>
+                    }
+                }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">No crashes</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<NavLink class="btn btn-primary" href="/admin/CRASH_ID/create">Create</NavLink>
+
+@code {
+    public ICrashRepository repo => Service;
+    public IEnumerable<Crash> CrashData { get; set; }
+    protected async override Task OnInitializedAsync()
+    {
+        await UpdateData();
+    }
+
+    public async Task UpdateData()
+    {
+        CrashData = await repo.Crashes.ToListAsync();
+    }
+    public string GetDetailsUrl(long CRASH_ID) => $"/admin/Crashes/details/{CRASH_ID}";
+
+    public string GetEditUrl(long CRASH_ID) => $"/admin/Crashes/edit/{CRASH_ID}";
+
+    public async Task RemoveCrash(Crash c)
+    {
+        repo.DeleteCrash(c);
+        await UpdateData();
+    }
+}

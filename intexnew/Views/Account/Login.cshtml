@@ -29,7 +29,7 @@
 
                 <div class="text-danger" asp-validation-summary="All"></div>
 
-                <form method="post" >@*@asp-controller="Account" asp-action="Login">*@
+                <form method="post" asp-controller="Account" asp-action="Login">
 
                     <div><h5>Admin Login</h5></div>
                     &nbsp
@@ -45,8 +45,8 @@
                     </div>
 
                     @*<button class="btn btn-primary" type="submit">Login</button>*@
-                    <button class="btn btn-dark m-3" type=submit asp-area="" asp-controller="Account" asp-action="Login">Login</button>
-                    <input type="hidden" asp-for="ReturnUrl" />
+                    <a class="btn btn-dark m-3" type=submit asp-area="" asp-controller="Admin" asp-action="CrashList">Login</a>
+                    @*<input type="hidden" asp-for="ReturnUrl" />*@
                 </form>
             </div>
 
