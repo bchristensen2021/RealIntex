@@ -41,7 +41,8 @@ namespace BookStore.Controllers
 
                     if ((await signInManager.PasswordSignInAsync(user, loginModel.Password, false, false)).Succeeded)
                     {
-                        return Redirect(loginModel?.ReturnUrl ?? "/Admin");
+                        //return Redirect(loginModel?.ReturnUrl ?? "/Admin");
+                        return Redirect("/Admin/CrashList");
                     }
                 }
             }
