@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BookStore.Controllers
+namespace intexnew.Controllers
 {
     public class AccountController : Controller
     {
@@ -41,7 +41,7 @@ namespace BookStore.Controllers
 
                     if ((await signInManager.PasswordSignInAsync(user, loginModel.Password, false, false)).Succeeded)
                     {
-                        return Redirect(loginModel?.ReturnUrl ?? "/Admin");
+                        return Redirect(loginModel?.ReturnUrl ?? "/Admin/CrashList");
                     }
                 }
             }
@@ -53,7 +53,7 @@ namespace BookStore.Controllers
         {
             await signInManager.SignOutAsync();
 
-            return Redirect(returnUrl);
+            return Redirect("/Home/CrashCardsIndex");
         }
 
     }

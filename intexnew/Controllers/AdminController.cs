@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace intexnew.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         public IActionResult Index()
@@ -74,7 +75,7 @@ namespace intexnew.Controllers
 
         //CRASHLIST
 
-        [Authorize]
+        
         //[HttpPost]
         public IActionResult CrashList(int severity = 0, int pageNum = 1)
         {

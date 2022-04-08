@@ -5,17 +5,16 @@
 
 @model CrashesViewModel
 @*@model intexnew.Models.ViewModels.CrashesViewModel*@
-@using Microsoft.AspNetCore.Identity
+@*@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Authorization
 @inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject UserManager<IdentityUser> UserManager*@
 
 
-@{
-    ViewData["Title"] = "Admin Crash List";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-    var prevDisabled = !Model.PageInfo.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.PageInfo.HasNextPage ? "disabled" : "";
-}
+@{ ViewData["Title"] = "Admin Crash List";
+                Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+                var prevDisabled = !Model.PageInfo.HasPreviousPage ? "disabled" : "";
+                var nextDisabled = !Model.PageInfo.HasNextPage ? "disabled" : ""; }
 
 <a asp-action="CrashList" asp-route-pageNum="@(Model.PageInfo.CurrentPage - 1)"
    class="btn btn-primary btn-group pull-right m-1 @prevDisabled">
@@ -33,14 +32,10 @@
 
 @foreach (Crash c in Model.Crashes)
 {
-    <partial name="CrashSummary" model="c" />
-
-    //edit & delete
-    <a class="btn btn-warning btn-sm" asp-area="" asp-controller="Admin" asp-route-id="@c.CRASH_ID" asp-action="Edit">Edit</a>
-    <a class="btn btn-danger btn-sm" asp-area="" asp-controller="Admin" asp-route-id="@c.CRASH_ID" asp-action="Delete">Delete</a>
-    <br />
-
-}
+<partial name="CrashSummary" model="c" /> //edit & delete
+<a class="btn btn-warning btn-sm" asp-area="" asp-controller="Admin" asp-route-id="@c.CRASH_ID" asp-action="Edit">Edit</a>
+                <a class="btn btn-danger btn-sm" asp-area="" asp-controller="Admin" asp-route-id="@c.CRASH_ID" asp-action="Delete">Delete</a>
+                                <br />}
 
 
 @*</div>*@

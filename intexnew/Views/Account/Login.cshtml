@@ -1,9 +1,10 @@
-﻿@{
-    Layout = null;
-    ViewData["Title"] = "Login";
-}
+﻿@{ Layout = null;
+    ViewData["Title"] = "Login"; }
 
 @model LoginModel
+@using Microsoft.AspNetCore.Identity
+@*@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager*@
 
 <html>
 <head>
@@ -44,9 +45,9 @@
                         <input asp-for="Password" class="form-control" type="password" />
                     </div>
 
-                    @*<button class="btn btn-primary" type="submit">Login</button>*@
-                    <a class="btn btn-dark m-3" type=submit asp-area="" asp-controller="Admin" asp-action="CrashList">Login</a>
-                    @*<input type="hidden" asp-for="ReturnUrl" />*@
+                    <button class="btn btn-primary" type="submit">Login</button>
+                    @*<a class="btn btn-dark m-3" type=submit asp-area="" asp-controller="Account" asp-action="Login">Login</a>*@
+                    <input type="hidden" asp-for="ReturnUrl" />
                 </form>
             </div>
 

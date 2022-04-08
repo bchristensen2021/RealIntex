@@ -14,7 +14,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using intexnew.Models;
 using intexnew.Models.ViewModels;
-using BookStore.Models;
 using Microsoft.AspNetCore.Http;
 
 namespace intexnew
@@ -113,7 +112,7 @@ namespace intexnew
                 endpoints.MapRazorPages();
 
                 //endpoints.MapBlazorHub();
-                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/CrashList");
+                endpoints.MapFallbackToPage("/admin", "/Admin/CrashList");
             });
 
             IdentitySeedData.EnsurePopulated(app);
