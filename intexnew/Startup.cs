@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using intexnew.Models;
 using intexnew.Models.ViewModels;
 using Microsoft.AspNetCore.Http;
+using Microsoft.ML.OnnxRuntime;
 
 namespace intexnew
 {
@@ -28,10 +29,14 @@ namespace intexnew
         public Startup(IConfiguration temp)
         {
             Configuration = temp;
+
         }
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddSingleton<InferenceSession>(
+                new InferenceSession("wwwroot/UtahCrash.onnx"));
 
             //This was for sqlite connection
             //services.AddDbContext<BookContext>(options =>
@@ -39,9 +44,9 @@ namespace intexnew
             //    options.UseSqlite(Configuration["ConnectionStrings:BookDBConnection"]);
             //});
 
-            //why is the DbContext AppIdentity?, Bethany is commenting this out and changing it to the line below
-            //services.AddDbContext<AppIdentityDBContext>(options =>
-             //options.UseMySql(Configuration["ConnectionStrings:CrashesDbConnection"]));
+//why is the DbContext AppIdentity?, Bethany is commenting this out and changing it to the line below
+//services.AddDbContext<AppIdentityDBContext>(options =>
+//options.UseMySql(Configuration["ConnectionStrings:CrashesDbConnection"]));
 
             services.AddDbContext<CrashesDbContext>(options =>
             {
@@ -105,6 +110,9 @@ namespace intexnew
 
                 endpoints.MapControllerRoute("category", "{category}", new { Controller = "Admin", action = "CrashList", pageNum = 1 });
 
+                //endpoints.MapControllerRoute(
+                //   name: "default",
+                //   pattern: "{controller=Inference}/{action=EnterData}/{id?}");
 
 
                 endpoints.MapDefaultControllerRoute();

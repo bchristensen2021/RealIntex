@@ -20,6 +20,10 @@ namespace intexnew.Controllers
             repo = temp;
         }
 
+        public IActionResult Privacy()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
             return View();

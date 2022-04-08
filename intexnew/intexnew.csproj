@@ -29,6 +29,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.23" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.23" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.11.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.7" />
   </ItemGroup>
   <ItemGroup>
@@ -44,5 +45,10 @@
     <Content Remove="wwwroot\asset\" />
     <Content Remove="wwwroot\asset\pm4\" />
     <Content Remove="wwwroot\asset\img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Inference\EnterData.cshtml" />
+    <None Include="Views\Inference\Score.cshtml" />
+    <None Include="wwwroot\UtahCrash.onnx" />
   </ItemGroup>
 </Project>
